@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [{
       hostname: "gog53pkxdx.ufs.sh",
     }]
-  }
+  },
 };
 
 export default nextConfig;
