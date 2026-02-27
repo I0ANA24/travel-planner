@@ -130,18 +130,13 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
           </TabsContent>
 
           <TabsContent value="itinerary" className="space-y-6">
-            {/* {trip.locations.map((key, location) => (
-              <p key={key}>{location.locationTitle}</p>
-              
-            ))} */}
-
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold">Full Itinerary</h2>
             </div>
 
             {trip.locations.length === 0 ? (
               <div className="text-center p-4">
-                <p>Add locations too see them on the itinerary.</p>
+                <p>Add locations to see them on the itinerary.</p>
                 <Link href={`/trips/${trip.id}/itinerary/new`}>
                   <Button>
                     <Plus className="mr-2 size-5" /> Add Location
