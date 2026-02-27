@@ -66,13 +66,13 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
       <div className="bg-white p-6 shadow rounded-lg">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="mb-6">
-            <TabsTrigger value="overview" className="text-lg">
+            <TabsTrigger value="overview" className="text-lg cursor-pointer">
               Overview
             </TabsTrigger>
-            <TabsTrigger value="itinerary" className="text-lg">
+            <TabsTrigger value="itinerary" className="text-lg cursor-pointer">
               Itinerary
             </TabsTrigger>
-            <TabsTrigger value="map" className="text-lg">
+            <TabsTrigger value="map" className="text-lg cursor-pointer">
               Map
             </TabsTrigger>
           </TabsList>
@@ -147,7 +147,31 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
               <SortableItinerary locations={trip.locations} tripId={trip.id} />
             )}
           </TabsContent>
+
+          <TabsContent value="map" className="space-y-6">
+            <div className="h-72 rounded-lg overflow-hidden shadow">
+              <Map itineraries={trip.locations} />
+            </div>
+            {trip.locations.length === 0 && (
+              <div className="text-center p-4">
+                <p>Add locations too see them on the map.</p>
+                <Link href={`/trips/${trip.id}/itinerary/new`}>
+                  <Button>
+                    <Plus className="mr-2 size-5" /> Add Location
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </TabsContent>
         </Tabs>
+      </div>
+
+      <div className="text-center">
+        <Link href={`/trips`}>
+          <Button>
+            Back to Trips
+          </Button>
+        </Link>
       </div>
     </div>
   );
